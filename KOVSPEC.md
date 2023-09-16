@@ -10,4 +10,10 @@ Az ideális rendszerben a felhasználók gyorsan és egyszerűen regisztrálhatn
 Miután a felhasználó sikeresen regisztrált, automatikusan kap egy véletlenszerű skint az adatbázisból, amit a profiljában megtekinthet.
 ## Skincsere platform: 
 A felhasználók képesek lennének listázni a birtokukban lévő skineket, és ajánlatokat tehetnek mások skineire, vagy fogadhatnak ajánlatokat a sajátjaikra
-# 4.
+# 4. Funkcionális követelmény
+- Felhasználó kezelés
+    - Regisztráció/Bejelentkezés
+    - Véletlenszerű skineket kap a felhasználó regisztrációkor
+        - Adott ritkaságokból adott mennyiséget kap
+- Csere felhasználók között
+    - A felhasználók csere ajánlatokat tehetnek és fogadhatnak el
