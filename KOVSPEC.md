@@ -4,5 +4,10 @@ Az egész webalkalmazás React-Node.js és MYSQL segítségével lesz létrehozv
 # 2. Jelenlegi helyzet
 Az elmúlt időszakban észrevettük, hogy számos kamu (scam) oldal jelenik meg, amelyek hasonló szolgáltatásokat kínálnak, mint amit mi tervezünk. Ezek az oldalak általában arra összpontosítanak, hogy megtévesszék és átverjék a felhasználókat, gyakran pénzügyi veszteséggel járva.
 Ennek fényében kiemelten fontos számunkra, hogy olyan webalkalmazást hozzunk létre, amelyben a felhasználók teljes mértékben megbízhatnak. Ez azt jelenti, hogy minden lépésben az átláthatóság és a biztonság az elsődleges szempont lesz.
-# 3.
+# 3. Vágyálom rendszer
+Az ideális rendszerben a felhasználók gyorsan és egyszerűen regisztrálhatnak, majd azonnal belemerülhetnek az alkalmazás élményébe. A kezelőfelület intenzív, azonban nem zavaróan zsúfolt, így a felhasználó könnyedén megtalálja a számára lényeges funkciókat.
+## Véletlenszerű skin kiosztás: 
+Miután a felhasználó sikeresen regisztrált, automatikusan kap egy véletlenszerű skint az adatbázisból, amit a profiljában megtekinthet.
+## Skincsere platform: 
+A felhasználók képesek lennének listázni a birtokukban lévő skineket, és ajánlatokat tehetnek mások skineire, vagy fogadhatnak ajánlatokat a sajátjaikra
 # 4.
