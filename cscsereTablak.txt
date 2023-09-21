@@ -1,0 +1,29 @@
+felhasznalok
+-userId		INT
+-username	VARCHAR(255)
+-passwd		VARCHAR(255)
+-email		VARCHAR(255)
+
+skinek
+-skinId		INT
+-kep		VARCHAR(255)
+-nev		VARCHAR(255)
+-ritkaságId	INT
+-érték		INT
+-fegyverId	INT
+
+fegyver
+-
+
+ritkaság
+-
+
+inventory
+-skinId		INT
+-userId		INT
+
+offers
+-fromUserId	INT
+-skinId		INT
+-toUserId	INT
+
