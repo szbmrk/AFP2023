@@ -1,0 +1,24 @@
+.loginpanel {
+    background-color: #ffc0af;
+    width: 400px;
+    height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    color: #1a2639;
+    font-size: large;
+    font-weight: bold;
+}
+
+.login {
+    margin: 10px;
+    color: #d9dad7;
+    background-color: #132743;
+}

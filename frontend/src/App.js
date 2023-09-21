@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Login from './components//Login';
 import Register from './components/Register';
-
+import './styles/navbar.css';
 function App() {
     return (
         <BrowserRouter>
