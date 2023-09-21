@@ -1,5 +1,5 @@
 # 1. Áttekintés
-A kis projekt ötlete egy React-Node.js alapú webalkalmazás tervezése és fejlesztése, amely a Counter-Strike skinekkel foglalkozik. Az alkalmazás lehetővé teszi a felhasználók számára, hogy regisztrálás után véletlenszerű skint kapjanak, és cseréljenek skineket egymással. Az adatokat statikusan tároljuk az adatbázisban. 
+A kis projekt ötlete egy React-Node.js alapú webalkalmazás tervezése és fejlesztése, amely a Counter-Strike skinekkel foglalkozik. Az alkalmazás lehetővé teszi a felhasználók számára, hogy regisztrálás után véletlenszerű skint kapjanak, és cseréljenek skineket egymással. Az adatokat statikusan tároljuk az adatbázisban. A skinek érték alapján lesznek besorolva, a felhasználók csak azonos értékű skineket tudnak egymással cserélgeti.
 Az egész webalkalmazás React-Node.js és MYSQL segítségével lesz létrehozva.
 # 2. Jelenlegi helyzet
 Az elmúlt időszakban észrevettük, hogy számos kamu (scam) oldal jelenik meg, amelyek hasonló szolgáltatásokat kínálnak, mint amit mi tervezünk. Ezek az oldalak általában arra összpontosítanak, hogy megtévesszék és átverjék a felhasználókat, gyakran pénzügyi veszteséggel járva.
@@ -17,3 +17,12 @@ A felhasználók képesek lennének listázni a birtokukban lévő skineket, és
         - Adott ritkaságokból adott mennyiséget kap
 - Csere felhasználók között
     - A felhasználók csere ajánlatokat tehetnek és fogadhatnak el
+
+# 5. Fogalomtár
+## Counter-Strike: 
+    - Első nézetű többjátékos online játék, amelyet a Valve fejlesztett és adott ki 2012-ben
+## Skin:
+    - Fegyverkinézet a játékon belüli megvásárolható fegyverekre.
+## Skin érték:
+    - A skineknek egy ritkaságuk van, amely meghatározza az értéküket.
+
