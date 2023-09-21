@@ -31,3 +31,4 @@ offers
 -fromskinId	INT
 -toUserId	INT
 -toskinId	Int
+-elfogadva	BOOL
