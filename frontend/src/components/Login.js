@@ -8,9 +8,6 @@ export default function Login() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/login" disabled>Login</Link>
-                    </li>
-                    <li>
                         <Link to="/register">Register</Link>
                     </li>
                 </ul>
@@ -22,10 +19,7 @@ export default function Login() {
                 <p>jelszó</p>
                 <input type="text" className="password"></input>
                 <button type="button" className="login">Bejelentkezés</button>
-
-
             </div>
-
         </div>
     )
 }

@@ -3,6 +3,10 @@ import db from "../db/db_config.js";
 
 const router = express.Router();
 
+router.get("/test", (req, res) => {
+    res.send("Hello World!");
+});
+
 router.post("/register", (req, res) => {
     const { username, email, password } = req.body;
     const sqlInsert =
