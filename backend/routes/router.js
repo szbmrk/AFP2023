@@ -3,13 +3,27 @@ import db from "../db/db_config.js";
 
 const router = express.Router();
 
-router.get('/test', (req, res) => {
-    db.query('SELECT * FROM felhasznalok', (err, rows) => {
+router.post("/register", (req, res) => {
+    const { username, email, password } = req.body;
+    const sqlInsert =
+        "INSERT INTO felhasznalok (username, passwd, email) VALUES (?,?,?)";
+    db.query(sqlInsert, [username, password, email], (err, result) => {
+        console.log(err);
+    });
+});
+
+router.post("/login", (req, res) => {
+    const { username, password } = req.body;
+    const sqlSelect = "SELECT * FROM felhasznalok WHERE username = ? AND passwd = ?";
+    db.query(sqlSelect, [username, password], (err, result) => {
         if (err) {
-            console.error('Error connecting to the database:', err);
-            return;
+            res.send({ err: err });
         }
-        res.send(rows);
+        if (result.length > 0) {
+            res.send(result);
+        } else {
+            res.send({ message: "Wrong username/password combination!" });
+        }
     });
 });
 
