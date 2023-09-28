@@ -57,13 +57,13 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
     - Bejelentkezés
     - Főmenü
 - **INVENTORY**
-    -Nincs gomb
+    - Nincs gomb
 - **ALLSKINS**
-    -Nincs gomb
+    - Nincs gomb
 - **OFFERS**
-    -Elfogadás
-    -Elutasítás
-    -Csere kezdeményezés
+    - Elfogadás
+    - Elutasítás
+    - Csere kezdeményezés
 
 
 ## Menükhöz tartozó specifikációk:
@@ -87,9 +87,12 @@ Nincsenek megvásárolt komponenseink.
 # 8. Architekturális terv
 A rendszer háromrétegű architektúrát követ:
 
-Kliensréteg (Frontend): React alapú, a felhasználói interakciókért felelős.
-Üzleti logika réteg (Backend): Node.js segítségével készül, és kezeli a logikai műveleteket.
-Adatrétég: MYSQL adatbázis, ahol az adatok tárolódnak.
+**Kliensréteg (Frontend):**
+    - React alapú, a felhasználói interakciókért felelős.
+**Üzleti logika réteg (Backend):**
+    - Node.js segítségével készül, és kezeli a logikai műveleteket.
+**Adatrétég:** 
+    - MYSQL adatbázis, ahol az adatok tárolódnak.
 
 
 # 9. Adatbázis terv
