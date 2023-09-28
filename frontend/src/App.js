@@ -6,18 +6,32 @@ import Register from './components/Register';
 import './styles/navbar.css';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Home from './components/Inventory';
+import Inventory from './components/Inventory';
+import AllSkins from './components/AllSkins';
+import Offers from './components/Offers';
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<ProtectedRoute> <Navigate to="/home" /> </ProtectedRoute>} />
+                <Route path="/" element={<ProtectedRoute> <Navigate to="/inventory" /> </ProtectedRoute>} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
-                <Route exact path="/board/:board_id" element={
+                <Route exact path="/logout" element={<ProtectedRoute> <Navigate to="/login" /> </ProtectedRoute>} />
+                <Route exact path="/inventory" element={
                     <ProtectedRoute>
                         <Navbar />
-                        <Home />
+                        <Inventory />
+                    </ProtectedRoute>} />
+                <Route exact path="/skins" element={
+                    <ProtectedRoute>
+                        <Navbar />
+                        <AllSkins />
+                    </ProtectedRoute>} />
+                <Route exact path="/offers" element={
+                    <ProtectedRoute>
+                        <Navbar />
+                        <Offers />
                     </ProtectedRoute>} />
             </Routes>
         </BrowserRouter>

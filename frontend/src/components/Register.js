@@ -32,6 +32,11 @@ export default function Register() {
         }
         else {
             alert(response.data.message);
+            setForm({
+                username: "",
+                email: "",
+                password: ""
+            });
         }
     }
 
