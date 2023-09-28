@@ -1,21 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavLink from './NavLink'
+import '../styles/navbar.css'
 
 export default function Navbar() {
     return (
         <nav>
             <ul>
                 <li>
-                    <Link to="/inventory">inventory</Link>
+                    <NavLink to="/inventory">inventory</NavLink>
                 </li>
                 <li>
-                    <Link to="/skins">all skins</Link>
+                    <NavLink to="/skins">all skins</NavLink>
                 </li>
                 <li>
-                    <Link to="/offers">offers</Link>
+                    <NavLink to="/offers">offers</NavLink>
                 </li>
                 <li>
-                    <Link to="/logout">logout</Link>
+                    <NavLink to="/logout">logout</NavLink>
                 </li>
             </ul>
         </nav>
