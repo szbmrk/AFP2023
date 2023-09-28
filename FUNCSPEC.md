@@ -55,10 +55,51 @@ Logout gombbal pedig kijelentkezhet a felhasználó az oldalról.
 Ajánlat elutasítása esetén a rendszer értesítést küld a felhasználónak.
 ## 5. Adatmodell
 
-Felhasználó: Felhasználónév, Jelszó, E-mail, Birtokolt skinek.
-Skin: Skin név, Ritkaság, Érték.
+# 5.1. Felhasználók
+
+userId: INT (Egyedi azonosító)
+username: VARCHAR(255) (Felhasználónév)
+passwd: VARCHAR(255) (Jelszó)
+email: VARCHAR(255) (E-mail cím)
+# 5.2. Skinek
+
+skinId: INT (Skin egyedi azonosítója)
+kep: VARCHAR(255) (Skin képének útvonala/elérhetősége)
+nev: VARCHAR(255) (Skin neve)
+ritkaságId: INT (Hivatkozás a ritkaság táblára)
+érték: INT (Skin értéke)
+fegyverId: INT (Hivatkozás a fegyver táblára)
+# 5.3. Fegyver
+
+fegyverId: INT (Egyedi azonosító)
+fegyverNev: VARCHAR(255) (Fegyverek nevei, mint például "AK-47", "M4A1-S", stb.)
+# 5.4. Ritkaság
+
+ritkasagId: INT (Egyedi azonosító)
+ritkasagNev: VARCHAR(255) (Ritkaságok, mint "kék", "lila", "rózsaszín", stb.)
+# 5.5. Inventory
+
+skinId: INT (Hivatkozás a skinek táblára)
+userId: INT (Hivatkozás a felhasználók táblára)
+# 5.6. Offers
+
+fromUserId: INT (Ajánlatot tevő felhasználó ID-ja)
+fromskinId: INT (Ajánlatot tevő felhasználó skinjének ID-ja)
+toUserId: INT (Ajánlatot fogadó felhasználó ID-ja)
+toskinId: INT (Ajánlatot fogadó felhasználó skinjének ID-ja)
+elfogadva: BOOL (Megjelöli, hogy az ajánlatot elfogadták-e)
 
 ![Képernyőterv főmenu1](./afp_db_kep.jpeg)
 ## 6. Megvalósítás
 
 A webalkalmazás React-Node.js technológiával, MYSQL adatbázissal kerül fejlesztésre.
+# 7. Fogalomtár
+
+## Counter-Strike: 
+- Első nézetű többjátékos online lövöldözős játék, amelyet a Valve és a Hidden Path Entertainment fejlesztett és adott ki 2012-ben. A játék két csapat, a terroristák és a counter-terroristák közötti összecsapásra koncentrál, különböző küldetéseken keresztül.
+## Skin:
+- A Counter-Strike: Global Offensive játékon belüli fegyverek és egyéb tárgyak testreszabását lehetővé tevő grafikai bevonatok. Ezek a skinek befolyásolják a fegyverek megjelenését, de nem adnak semmilyen előnyt a játékban. A játékosok megvásárolhatják, elcserélhetik vagy eladhatják ezeket a skineket a Steam Közösségi Piacon vagy más platformokon.
+## Offer:
+-ajánlat
+## Trade:
+-csere
