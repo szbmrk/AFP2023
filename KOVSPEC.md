@@ -20,11 +20,11 @@ Ezen az innovatív platformon a felhasználók nem csak listázhatják és bemut
 
 # 5. Fogalomtár
 ## Counter-Strike: 
-    - Első nézetű többjátékos online lövöldözős játék, amelyet a Valve és a Hidden Path Entertainment fejlesztett és adott ki 2012-ben. A játék két csapat, a terroristák és a counter-terroristák közötti összecsapásra koncentrál, különböző küldetéseken keresztül.
+- Első nézetű többjátékos online lövöldözős játék, amelyet a Valve és a Hidden Path Entertainment fejlesztett és adott ki 2012-ben. A játék két csapat, a terroristák és a counter-terroristák közötti összecsapásra koncentrál, különböző küldetéseken keresztül.
 ## Skin:
-    - A Counter-Strike: Global Offensive játékon belüli fegyverek és egyéb tárgyak testreszabását lehetővé tevő grafikai bevonatok. Ezek a skinek befolyásolják a fegyverek megjelenését, de nem adnak semmilyen előnyt a játékban. A játékosok megvásárolhatják, elcserélhetik vagy eladhatják ezeket a skineket a Steam Közösségi Piacon vagy más platformokon.
+- A Counter-Strike: Global Offensive játékon belüli fegyverek és egyéb tárgyak testreszabását lehetővé tevő grafikai bevonatok. Ezek a skinek befolyásolják a fegyverek megjelenését, de nem adnak semmilyen előnyt a játékban. A játékosok megvásárolhatják, elcserélhetik vagy eladhatják ezeket a skineket a Steam Közösségi Piacon vagy más platformokon.
 ## Skin érték:
-    - A skinek értéke a ritkaságukon, minőségükön és keresettségükön alapszik. Néhány skin rendkívül ritka és keresett, ami magas piaci értéket képvisel, míg mások kevésbé értékesek. Az értéket a játékosok közötti kereslet-kínálat is befolyásolja, valamint az események, mint például a nagyobb CS:GO versenyek.
+- A skinek értéke a ritkaságukon, minőségükön és keresettségükön alapszik. Néhány skin rendkívül ritka és keresett, ami magas piaci értéket képvisel, míg mások kevésbé értékesek. Az értéket a játékosok közötti kereslet-kínálat is befolyásolja, valamint az események, mint például a nagyobb CS:GO versenyek.
 # 6. Rendszerre vonatkozó törvények, szabványok, ajánlások
 ## Törvények
 - AZ EURÓPAI PARLAMENT ÉS A TANÁCS (EU) 2016/679 RENDELETE
