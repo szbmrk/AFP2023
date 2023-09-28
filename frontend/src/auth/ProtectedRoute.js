@@ -5,22 +5,24 @@ const ProtectedRoute = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const userId = sessionStorage.getItem('userId');
         const username = sessionStorage.getItem('username');
         const email = sessionStorage.getItem('email');
-        if (!username || !email) {
+        if (!userId || !username || !email) {
             navigate('/login');
         }
     }, []);
 
     useEffect(() => {
+        const userId = sessionStorage.getItem('userId');
         const username = sessionStorage.getItem('username');
         const email = sessionStorage.getItem('email');
-        if (!username || !email) {
+        if (!userId || !username || !email) {
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
         }
-    }, [sessionStorage.getItem('token')]);
+    }, [sessionStorage.getItem('userId')]);
 
     return children;
 };

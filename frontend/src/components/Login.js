@@ -26,8 +26,9 @@ export default function Login() {
         }
 
         if (response.data.message == "User logged in!") {
-            sessionStorage.setItem("username", JSON.stringify(response.data.result[0]));
-            sessionStorage.setItem("email", true);
+            sessionStorage.setItem("userId", JSON.stringify(response.data.result[0]));
+            sessionStorage.setItem("username", JSON.stringify(response.data.result[1]));
+            sessionStorage.setItem("email", JSON.stringify(response.data.result[2]));
             console.log('asd');
             navigate("/home")
         }
