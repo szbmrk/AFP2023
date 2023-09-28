@@ -47,7 +47,7 @@ Ezen az innovatív platformon a felhasználók nem csak listázhatják és bemut
 
 **A:** CSGO skinekkel foglalkozó oldal lesz. Az oldal funkciói a következők lehetnek:
 ## Skin Listázás és Csere: 
-    A felhasználók képesek listázni és bemutatni saját skineiket, és ajánlatokat tehetnek mások skineire. Másfelől pedig ajánlatokat is fogadhatnak saját skineikre.
+A felhasználók képesek listázni és bemutatni saját skineiket, és ajánlatokat tehetnek mások skineire. Másfelől pedig ajánlatokat is fogadhatnak saját skineikre.
 
 **Q:** Az interneten már számos ilyen  létezik. Miért szeretne még egy ilyen oldalt létrehozni? 
 
