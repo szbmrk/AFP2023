@@ -22,11 +22,17 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let response = await axios.post("http://localhost:5000/api/register", form)
-        if (response.data.message) {
-            alert(response.data.message);
+
+        if (response.data.err) {
+            alert(response.data.err);
         }
 
-        navigate("/login")
+        if (response.data.message == "User registered!") {
+            navigate("/login")
+        }
+        else {
+            alert(response.data.message);
+        }
     }
 
     return (
