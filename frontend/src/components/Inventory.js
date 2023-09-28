@@ -11,7 +11,6 @@ export default function Inventory() {
 
     const fetchSkins = async () => {
         const response = await axios.get("http://localhost:5000/api/inventory/" + userId);
-        console.log(response);
         setSkins(response.data.result);
     }
 

@@ -52,7 +52,7 @@ router.post("/login", (req, res) => {
 
 router.get("/inventory/:userid", (req, res) => {
     const userId = req.params.userid;
-    const sql = "SELECT * FROM inventory WHERE username = ? INNER JOIN skinek ON inventory.skinId = skinek.skinId INNER JOIN felhasznalok ON inventory.userId = felhasznalok.userId INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId INNER JOIN inventory ON skinek.skinId = inventory.skinId and inventory.userId = ?";
     db.query(sql, [userId], (err, result) => {
         if (err) {
             res.send({ err: err });
