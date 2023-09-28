@@ -14,8 +14,8 @@ Az ideális rendszerben a felhasználók gyorsan és egyszerűen regisztrálhatn
 | Funk. spec                  | A fejlesztő csapat dokumentációja         |       
 | Rendszerterv                | A rendszer átfogó dokumentációja          |      
 | Adattárolás                 | Adatbázis megvalósítása                   |      
-| Regisztrációs felület       |                                           |      
-| Bejelentkezési felület      |                                           |       
+| Regisztrációs felület       | Regisztráció frontend/backend             |      
+| Bejelentkezési felület      | Bejelentkezés frontend/backend            |       
 | Főoldal                     |                                           |
 | Design                      | css/javascript                            |    
 # 3. Üzleti feladatok modellje
@@ -32,7 +32,7 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
 # 5. Funkcionális terv 
 ## Rendszerszereplők:
 - **Felhasználó**
--**Admin**
+- **Admin**
 
 ## Rendszerhasználati esetek és lefutásaik:
 
@@ -44,7 +44,7 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
 - Összes skin megnézése
 
 **Admin**:
--Skinek feltöltése
+- Skinek feltöltése
 
 ## Menü-hierarchiák:
 - **FŐMENÜ**
@@ -56,11 +56,11 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
 - **REGISZTRÁCIÓ**
     - Bejelentkezés
     - Főmenü
--**INVENTORY**
-    -???????
--**ALLSKINS**
-    -???????
--**OFFERS**
+- **INVENTORY**
+    -Nincs gomb
+- **ALLSKINS**
+    -Nincs gomb
+- **OFFERS**
     -Elfogadás
     -Elutasítás
     -Csere kezdeményezés
@@ -85,8 +85,11 @@ Nincsenek megvásárolt komponenseink.
 
 
 # 8. Architekturális terv
-Nagyjából le kell írni, hogy milyen módon valósítjátok meg pa projektet pl.:
-A rendszerhez szükség van egy adatbázis szerverre, ebben az esetben MySql-t használunk...
+A rendszer háromrétegű architektúrát követ:
+
+Kliensréteg (Frontend): React alapú, a felhasználói interakciókért felelős.
+Üzleti logika réteg (Backend): Node.js segítségével készül, és kezeli a logikai műveleteket.
+Adatrétég: MYSQL adatbázis, ahol az adatok tárolódnak.
 
 
 # 9. Adatbázis terv
