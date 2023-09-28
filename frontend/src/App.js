@@ -8,6 +8,8 @@ import ProtectedRoute from './auth/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Home from './components/Inventory';
 import Inventory from './components/Inventory';
+import AllSkins from './components/AllSkins';
+import Offers from './components/Offers';
 function App() {
     return (
         <BrowserRouter>
@@ -20,6 +22,16 @@ function App() {
                     <ProtectedRoute>
                         <Navbar />
                         <Inventory />
+                    </ProtectedRoute>} />
+                <Route exact path="/skins" element={
+                    <ProtectedRoute>
+                        <Navbar />
+                        <AllSkins />
+                    </ProtectedRoute>} />
+                <Route exact path="/offers" element={
+                    <ProtectedRoute>
+                        <Navbar />
+                        <Offers />
                     </ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
