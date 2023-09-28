@@ -99,6 +99,6 @@ A rendszerhez szükség van egy adatbázis szerverre, ebben az esetben MySql-t h
 - Discord - verbális kommunikáció
 - Git, GitHub - Alkalmazás verzióinak követése
 - Rajzolóprogramok az ábrákhoz
-- Kódszerkesztők (VS, SubLime, Notepad++, stb.)
+- Kódszerkesztők (Visual Studio Code)
 - Prototype - mockup, képernyő tervek
 - stb
