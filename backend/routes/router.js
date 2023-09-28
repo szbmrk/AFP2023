@@ -115,6 +115,22 @@ router.get("/skins/:skinId", (req, res) => {
     });
 })
 
+router.post("sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
+    const fromUserId = req.params.fromUserId;
+    const toUserId = req.params.toUserId;
+    const fromSkinId = req.params.fromSkinId;
+    const toSkinId = req.params.toSkinId;
+    const sql = "INSERT INTO offers (fromUserId, toUserId, fromSkinId, toSkinId) VALUES (?, ?, ?, ?)";
+    db.query(sql, [fromUserId, toUserId, fromSkinId, toSkinId], (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+        if (result) {
+            res.send({ message: "Offer sent!" });
+        }
+    });
+})
+
 router.post("/acceptoffer/:offerId", (req, res) => {
     const offerId = req.params.offerId;
     const sql = "UPDATE offers SET accepted = 1 WHERE offerId = ?";
@@ -124,6 +140,18 @@ router.post("/acceptoffer/:offerId", (req, res) => {
         }
         if (result) {
             res.send({ message: "Offer accepted!" });
+        }
+    });
+    //update the inventory table
+    const sql2 = "UPDATE inventory SET userId = ?, skinId = ? WHERE userId = ? AND skinId = ?";
+    db.query(sql2, [toUserId, toSkinId, fromUserId, fromSkinId], (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+    });
+    db.query(sql2, [fromUserId, fromSkinId, toUserId, toSkinId], (err, result) => {
+        if (err) {
+            res.send({ err: err });
         }
     });
 })
