@@ -57,6 +57,8 @@ Ajánlat elutasítása esetén a rendszer értesítést küld a felhasználónak
 
 Felhasználó: Felhasználónév, Jelszó, E-mail, Birtokolt skinek.
 Skin: Skin név, Ritkaság, Érték.
+
+![Képernyőterv főmenu1](./afp_db_kep.jpeg)
 ## 6. Megvalósítás
 
 A webalkalmazás React-Node.js technológiával, MYSQL adatbázissal kerül fejlesztésre.
