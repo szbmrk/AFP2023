@@ -87,11 +87,11 @@ Nincsenek megvásárolt komponenseink.
 # 8. Architekturális terv
 A rendszer háromrétegű architektúrát követ:
 
-**Kliensréteg (Frontend):**
+- **Kliensréteg (Frontend):**
     - React alapú, a felhasználói interakciókért felelős.
-**Üzleti logika réteg (Backend):**
+- **Üzleti logika réteg (Backend):**
     - Node.js segítségével készül, és kezeli a logikai műveleteket.
-**Adatrétég:** 
+- **Adatrétég:** 
     - MYSQL adatbázis, ahol az adatok tárolódnak.
 
 
