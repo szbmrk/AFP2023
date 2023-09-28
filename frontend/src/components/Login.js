@@ -26,9 +26,9 @@ export default function Login() {
         }
 
         if (response.data.message == "User logged in!") {
-            sessionStorage.setItem("userId", JSON.stringify(response.data.result[0]));
-            sessionStorage.setItem("username", JSON.stringify(response.data.result[1]));
-            sessionStorage.setItem("email", JSON.stringify(response.data.result[2]));
+            sessionStorage.setItem("userId", JSON.stringify(response.data.result[0].userId));
+            sessionStorage.setItem("username", JSON.stringify(response.data.result[0].username));
+            sessionStorage.setItem("email", JSON.stringify(response.data.result[0].email));
             navigate("/inventory")
         }
         else {
