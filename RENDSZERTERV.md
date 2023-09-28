@@ -1,0 +1,1 @@
+# rendszer célja
