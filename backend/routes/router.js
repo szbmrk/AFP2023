@@ -37,13 +37,14 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
+    console.log('username' + username + 'password' + password)
     const sqlSelect = "SELECT * FROM felhasznalok WHERE username = ? AND passwd = ?";
     db.query(sqlSelect, [username, password], (err, result) => {
         if (err) {
             res.send({ err: err });
         }
         if (result.length > 0) {
-            res.send(result);
+            res.send({ result: result, message: "User logged in!" });
         } else {
             res.send({ message: "Wrong username/password combination!" });
         }
