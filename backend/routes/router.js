@@ -78,7 +78,7 @@ router.get("/skins", (req, res) => {
 
 router.get("/offers/:userId", (req, res) => {
     const userId = req.params.userId;
-    const sql = "SELECT * FROM offers WHERE toUserId = ?";
+    const sql = "SELECT * FROM offers WHERE toUserId = ? and accepted = 0";
     db.query(sql, [userId], (err, result) => {
         if (err) {
             res.send({ err: err });
@@ -111,6 +111,32 @@ router.get("/skins/:skinId", (req, res) => {
         }
         if (result) {
             res.send({ result: result, message: "Skin loaded!" });
+        }
+    });
+})
+
+router.post("/acceptoffer/:offerId", (req, res) => {
+    const offerId = req.params.offerId;
+    const sql = "UPDATE offers SET accepted = 1 WHERE offerId = ?";
+    db.query(sql, [offerId], (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+        if (result) {
+            res.send({ message: "Offer accepted!" });
+        }
+    });
+})
+
+router.delete("declineoffer/:offerId", (req, res) => {
+    const offerId = req.params.offerId;
+    const sql = "DELETE FROM offers WHERE offerId = ?";
+    db.query(sql, [offerId], (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+        if (result) {
+            res.send({ message: "Offer declined!" });
         }
     });
 })
