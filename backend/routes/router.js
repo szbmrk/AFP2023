@@ -37,7 +37,6 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    console.log('username' + username + 'password' + password)
     const sqlSelect = "SELECT * FROM felhasznalok WHERE username = ? AND passwd = ?";
     db.query(sqlSelect, [username, password], (err, result) => {
         if (err) {
@@ -65,7 +64,7 @@ router.get("/inventory/:userid", (req, res) => {
 });
 
 router.get("/skins", (req, res) => {
-    const sql = "SELECT * FROM skinek";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId";
     db.query(sql, (err, result) => {
         if (err) {
             res.send({ err: err });

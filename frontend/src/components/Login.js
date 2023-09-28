@@ -29,8 +29,7 @@ export default function Login() {
             sessionStorage.setItem("userId", JSON.stringify(response.data.result[0]));
             sessionStorage.setItem("username", JSON.stringify(response.data.result[1]));
             sessionStorage.setItem("email", JSON.stringify(response.data.result[2]));
-            console.log('asd');
-            navigate("/home")
+            navigate("/inventory")
         }
         else {
             alert(response.data.message);
