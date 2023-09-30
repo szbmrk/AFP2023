@@ -45,11 +45,11 @@ export default function Register() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/login">Login</Link>
+                        <Link to="/login">Bejelentkezés</Link>
                     </li>
                 </ul>
             </nav>
-            <div>Register</div>
+            <h1>Regisztráció</h1>
             <form className="loginpanel" onSubmit={handleSubmit}>
                 <p>felhasználónév</p>
                 <input name="username" type="text" className="user" onChange={handleChange} required></input>

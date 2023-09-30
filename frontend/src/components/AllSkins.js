@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import "../styles/allskins.css"
 
 export default function AllSkins() {
     const [skins, setSkins] = useState([]);
@@ -16,7 +17,7 @@ export default function AllSkins() {
 
     return (
         <>
-            <div>AllSkins</div>
+            <h1>Összes skin</h1>
             <div>
                 {skins.map((skin) => (
                     <div key={skin.skinId}>

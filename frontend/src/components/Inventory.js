@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import "../styles/inventory.css"
 
 export default function Inventory() {
     const [skins, setSkins] = useState([]);
@@ -16,7 +17,7 @@ export default function Inventory() {
 
     return (
         <>
-            <div>AllSkins</div>
+            <h1>Inventory</h1>
             {skins && skins.length == 0 ? <div>Inventory is empty!</div> : <div>
                 {skins.map((skin) => (
                     <div key={skin.skinId}>

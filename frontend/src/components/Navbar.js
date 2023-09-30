@@ -8,16 +8,16 @@ export default function Navbar() {
         <nav>
             <ul>
                 <li>
-                    <NavLink to="/inventory">inventory</NavLink>
+                    <NavLink to="/inventory">Inventory</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/skins">all skins</NavLink>
+                    <NavLink to="/skins">Összes skin</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/offers">offers</NavLink>
+                    <NavLink to="/offers">Ajánlatok</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/logout">logout</NavLink>
+                    <NavLink to="/logout">Kijelentkezés</NavLink>
                 </li>
             </ul>
         </nav>
