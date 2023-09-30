@@ -26,11 +26,10 @@ export default function Login() {
         }
 
         if (response.data.message == "User logged in!") {
-            sessionStorage.setItem("userId", JSON.stringify(response.data.result[0]));
-            sessionStorage.setItem("username", JSON.stringify(response.data.result[1]));
-            sessionStorage.setItem("email", JSON.stringify(response.data.result[2]));
-            console.log('asd');
-            navigate("/home")
+            sessionStorage.setItem("userId", JSON.stringify(response.data.result[0].userId));
+            sessionStorage.setItem("username", JSON.stringify(response.data.result[0].username));
+            sessionStorage.setItem("email", JSON.stringify(response.data.result[0].email));
+            navigate("/inventory")
         }
         else {
             alert(response.data.message);
@@ -47,11 +46,11 @@ export default function Login() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/register">Register</Link>
+                        <Link to="/register">Regisztráció</Link>
                     </li>
                 </ul>
             </nav>
-            <div>Login</div>
+            <h1>Bejelentkezés</h1>
             <form className="loginpanel" onSubmit={handleSubmit}>
                 <p>felhasználónév</p>
                 <input type="text" name="username" onChange={handleChange} className="user"></input>

@@ -37,7 +37,6 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    console.log('username' + username + 'password' + password)
     const sqlSelect = "SELECT * FROM felhasznalok WHERE username = ? AND passwd = ?";
     db.query(sqlSelect, [username, password], (err, result) => {
         if (err) {
@@ -53,7 +52,7 @@ router.post("/login", (req, res) => {
 
 router.get("/inventory/:userid", (req, res) => {
     const userId = req.params.userid;
-    const sql = "SELECT * FROM inventory WHERE username = ? JOIN skinek ON inventory.skinId = skinek.skinId JOIN felhasznalok ON inventory.userId = felhasznalok.userId";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId INNER JOIN inventory ON skinek.skinId = inventory.skinId and inventory.userId = ?";
     db.query(sql, [userId], (err, result) => {
         if (err) {
             res.send({ err: err });
@@ -65,7 +64,7 @@ router.get("/inventory/:userid", (req, res) => {
 });
 
 router.get("/skins", (req, res) => {
-    const sql = "SELECT * FROM skinek";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId";
     db.query(sql, (err, result) => {
         if (err) {
             res.send({ err: err });
