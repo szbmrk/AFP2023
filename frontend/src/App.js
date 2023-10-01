@@ -10,6 +10,7 @@ import Home from './components/Inventory';
 import Inventory from './components/Inventory';
 import AllSkins from './components/AllSkins';
 import Offers from './components/Offers';
+import AddOffer from './components/AddOffer';
 function App() {
     return (
         <BrowserRouter>
@@ -32,6 +33,11 @@ function App() {
                     <ProtectedRoute>
                         <Navbar />
                         <Offers />
+                    </ProtectedRoute>} />
+                <Route exact path="/offers/add" element={
+                    <ProtectedRoute>
+                        <Navbar />
+                        <AddOffer />
                     </ProtectedRoute>} />
             </Routes>
         </BrowserRouter>

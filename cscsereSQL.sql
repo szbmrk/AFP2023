@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 12:49 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2023. Okt 01. 12:52
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cscsere`
+-- Adatbázis: `cscsere`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fegyver`
+-- Tábla szerkezet ehhez a táblához `fegyver`
 --
 
 CREATE TABLE `fegyver` (
@@ -32,10 +32,17 @@ CREATE TABLE `fegyver` (
   `fegyverNev` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `fegyver`
+--
+
+INSERT INTO `fegyver` (`fegyverId`, `fegyverNev`) VALUES
+(1, 'test');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `felhasznalok`
+-- Tábla szerkezet ehhez a táblához `felhasznalok`
 --
 
 CREATE TABLE `felhasznalok` (
@@ -45,10 +52,18 @@ CREATE TABLE `felhasznalok` (
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`userId`, `username`, `passwd`, `email`) VALUES
+(2, 'test', 'test', 'test@gmail.com'),
+(3, 'test1', 'test1', 'test1@gmail.com');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inventory`
+-- Tábla szerkezet ehhez a táblához `inventory`
 --
 
 CREATE TABLE `inventory` (
@@ -56,13 +71,22 @@ CREATE TABLE `inventory` (
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `inventory`
+--
+
+INSERT INTO `inventory` (`skinId`, `userId`) VALUES
+(1, 2),
+(2, 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offerek`
+-- Tábla szerkezet ehhez a táblához `offerek`
 --
 
 CREATE TABLE `offerek` (
+  `offerId` int(11) NOT NULL,
   `fromUserId` int(11) NOT NULL,
   `fromSkinId` int(11) NOT NULL,
   `toUserId` int(11) NOT NULL,
@@ -70,10 +94,17 @@ CREATE TABLE `offerek` (
   `elfogadva` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `offerek`
+--
+
+INSERT INTO `offerek` (`offerId`, `fromUserId`, `fromSkinId`, `toUserId`, `toSkinId`, `elfogadva`) VALUES
+(1, 2, 1, 3, 2, 0);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ritkasag`
+-- Tábla szerkezet ehhez a táblához `ritkasag`
 --
 
 CREATE TABLE `ritkasag` (
@@ -81,10 +112,17 @@ CREATE TABLE `ritkasag` (
   `ritkasagNev` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `ritkasag`
+--
+
+INSERT INTO `ritkasag` (`ritkasagId`, `ritkasagNev`) VALUES
+(1, 'test_ritkasag');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skinek`
+-- Tábla szerkezet ehhez a táblához `skinek`
 --
 
 CREATE TABLE `skinek` (
@@ -97,45 +135,54 @@ CREATE TABLE `skinek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Indexes for dumped tables
+-- A tábla adatainak kiíratása `skinek`
+--
+
+INSERT INTO `skinek` (`skinId`, `kep`, `nev`, `ritkasagId`, `ertek`, `fegyverId`) VALUES
+(1, 'asd.jpg', 'test_fegyver_1', 1, 99, 1),
+(2, 'asd1.jpg', 'test_fegyver_2', 1, 100, 1);
+
+--
+-- Indexek a kiírt táblákhoz
 --
 
 --
--- Indexes for table `fegyver`
+-- A tábla indexei `fegyver`
 --
 ALTER TABLE `fegyver`
   ADD PRIMARY KEY (`fegyverId`);
 
 --
--- Indexes for table `felhasznalok`
+-- A tábla indexei `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
   ADD PRIMARY KEY (`userId`);
 
 --
--- Indexes for table `inventory`
+-- A tábla indexei `inventory`
 --
 ALTER TABLE `inventory`
   ADD KEY `fk_user_id` (`userId`),
   ADD KEY `fk_skin_id` (`skinId`);
 
 --
--- Indexes for table `offerek`
+-- A tábla indexei `offerek`
 --
 ALTER TABLE `offerek`
+  ADD PRIMARY KEY (`offerId`),
   ADD KEY `fk_fromUser_id` (`fromUserId`),
   ADD KEY `fk_toUser_id` (`toUserId`),
   ADD KEY `fk_fromSkin_id` (`fromSkinId`),
   ADD KEY `fk_toSkin_id` (`toSkinId`);
 
 --
--- Indexes for table `ritkasag`
+-- A tábla indexei `ritkasag`
 --
 ALTER TABLE `ritkasag`
   ADD PRIMARY KEY (`ritkasagId`);
 
 --
--- Indexes for table `skinek`
+-- A tábla indexei `skinek`
 --
 ALTER TABLE `skinek`
   ADD PRIMARY KEY (`skinId`),
@@ -143,46 +190,52 @@ ALTER TABLE `skinek`
   ADD KEY `fk_ritkasag` (`ritkasagId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
--- AUTO_INCREMENT for table `fegyver`
+-- AUTO_INCREMENT a táblához `fegyver`
 --
 ALTER TABLE `fegyver`
-  MODIFY `fegyverId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fegyverId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `felhasznalok`
+-- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ritkasag`
+-- AUTO_INCREMENT a táblához `offerek`
+--
+ALTER TABLE `offerek`
+  MODIFY `offerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT a táblához `ritkasag`
 --
 ALTER TABLE `ritkasag`
-  MODIFY `ritkasagId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ritkasagId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `skinek`
+-- AUTO_INCREMENT a táblához `skinek`
 --
 ALTER TABLE `skinek`
-  MODIFY `skinId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `skinId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Megkötések a kiírt táblákhoz
 --
 
 --
--- Constraints for table `inventory`
+-- Megkötések a táblához `inventory`
 --
 ALTER TABLE `inventory`
   ADD CONSTRAINT `fk_skin_id` FOREIGN KEY (`skinId`) REFERENCES `skinek` (`skinId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`userId`) REFERENCES `felhasznalok` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `offerek`
+-- Megkötések a táblához `offerek`
 --
 ALTER TABLE `offerek`
   ADD CONSTRAINT `fk_fromSkin_id` FOREIGN KEY (`fromSkinId`) REFERENCES `skinek` (`skinId`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -191,7 +244,7 @@ ALTER TABLE `offerek`
   ADD CONSTRAINT `fk_toUser_id` FOREIGN KEY (`toUserId`) REFERENCES `felhasznalok` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `skinek`
+-- Megkötések a táblához `skinek`
 --
 ALTER TABLE `skinek`
   ADD CONSTRAINT `fk_fegyver` FOREIGN KEY (`fegyverId`) REFERENCES `fegyver` (`fegyverId`) ON DELETE CASCADE ON UPDATE CASCADE,

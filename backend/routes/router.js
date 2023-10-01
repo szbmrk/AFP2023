@@ -75,18 +75,55 @@ router.get("/skins", (req, res) => {
     });
 });
 
-router.get("/offers/:userId", (req, res) => {
+router.get("/offers/:userId", async (req, res) => {
     const userId = req.params.userId;
-    const sql = "SELECT * FROM offers WHERE toUserId = ? and accepted = 0";
-    db.query(sql, [userId], (err, result) => {
-        if (err) {
-            res.send({ err: err });
+    const sql = "SELECT * FROM offerek INNER JOIN felhasznalok ON offerek.fromUserId = felhasznalok.userId WHERE toUserId = ? and elfogadva = 0";
+
+    try {
+        const result = await new Promise((resolve, reject) => {
+            db.query(sql, [userId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        let mySkinPromises = [];
+        let theirSkinPromises = [];
+
+        for (let i = 0; i < result.length; i++) {
+            mySkinPromises.push(getSkin(result[i].fromSkinId));
+            theirSkinPromises.push(getSkin(result[i].toSkinId));
         }
-        if (result) {
-            res.send({ result: result, message: "Offers loaded!" });
+
+        const mySkins = await Promise.all(mySkinPromises);
+        const theirSkins = await Promise.all(theirSkinPromises);
+
+        for (let i = 0; i < result.length; i++) {
+            result[i].mySkin = mySkins[i];
+            result[i].theirSkin = theirSkins[i];
         }
+
+        res.send({ result: result, message: "Offers loaded!" });
+    } catch (err) {
+        res.send({ err: err });
+    }
+});
+
+function getSkin(skinId) {
+    const sql2 = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId WHERE skinId = ?";
+    return new Promise((resolve, reject) => {
+        db.query(sql2, [skinId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
     });
-})
+}
 
 router.get("/users/:userId", (req, res) => {
     const userId = req.params.userId;
@@ -101,6 +138,18 @@ router.get("/users/:userId", (req, res) => {
     });
 })
 
+router.get("/users", (req, res) => {
+    const sql = "SELECT * FROM felhasznalok";
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+        if (result) {
+            res.send({ result: result, message: "Users loaded!" });
+        }
+    });
+});
+
 router.get("/skins/:skinId", (req, res) => {
     const skinId = req.params.skinId;
     const sql = "SELECT * FROM skinek WHERE skinId = ?";
@@ -114,12 +163,12 @@ router.get("/skins/:skinId", (req, res) => {
     });
 })
 
-router.post("sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
+router.post("/sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
     const fromUserId = req.params.fromUserId;
     const toUserId = req.params.toUserId;
     const fromSkinId = req.params.fromSkinId;
     const toSkinId = req.params.toSkinId;
-    const sql = "INSERT INTO offers (fromUserId, toUserId, fromSkinId, toSkinId) VALUES (?, ?, ?, ?)";
+    const sql = "INSERT INTO offerek (fromUserId, toUserId, fromSkinId, toSkinId) VALUES (?, ?, ?, ?)";
     db.query(sql, [fromUserId, toUserId, fromSkinId, toSkinId], (err, result) => {
         if (err) {
             res.send({ err: err });
@@ -130,34 +179,96 @@ router.post("sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) 
     });
 })
 
-router.post("/acceptoffer/:offerId", (req, res) => {
+router.post("/acceptoffer/:offerId", async (req, res) => {
     const offerId = req.params.offerId;
-    const sql = "UPDATE offers SET accepted = 1 WHERE offerId = ?";
-    db.query(sql, [offerId], (err, result) => {
-        if (err) {
-            res.send({ err: err });
-        }
-        if (result) {
-            res.send({ message: "Offer accepted!" });
-        }
-    });
-    //update the inventory table
-    const sql2 = "UPDATE inventory SET userId = ?, skinId = ? WHERE userId = ? AND skinId = ?";
-    db.query(sql2, [toUserId, toSkinId, fromUserId, fromSkinId], (err, result) => {
-        if (err) {
-            res.send({ err: err });
-        }
-    });
-    db.query(sql2, [fromUserId, fromSkinId, toUserId, toSkinId], (err, result) => {
-        if (err) {
-            res.send({ err: err });
-        }
-    });
-})
 
-router.delete("declineoffer/:offerId", (req, res) => {
+    // Promise to get the offer details
+    const getOfferDetails = new Promise((resolve, reject) => {
+        const sql1 = "SELECT * FROM offerek WHERE offerId = ?";
+        db.query(sql1, [offerId], (err, offerResult) => {
+            if (err) {
+                reject(err);
+            } else {
+                if (offerResult.length === 0) {
+                    reject("Offer not found");
+                } else {
+                    const { fromUserId, fromSkinId, toUserId, toSkinId } = offerResult[0];
+                    resolve({ fromUserId, fromSkinId, toUserId, toSkinId });
+                }
+            }
+        });
+    });
+
+    try {
+        const { fromUserId, fromSkinId, toUserId, toSkinId } = await getOfferDetails;
+
+        // Promise to update the offer status
+        const updateOfferStatus = new Promise((resolve, reject) => {
+            const sql2 = "UPDATE offerek SET elfogadva = 1 WHERE offerId = ?";
+            db.query(sql2, [offerId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const deleteCurrent1 = new Promise((resolve, reject) => {
+            const sql3 = "DELETE FROM inventory WHERE userId = ? AND skinId = ?";
+            db.query(sql3, [fromUserId, fromSkinId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const deleteCurrent2 = new Promise((resolve, reject) => {
+            const sql4 = "DELETE FROM inventory WHERE userId = ? AND skinId = ?";
+            db.query(sql4, [toUserId, toSkinId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const insertNew1 = new Promise((resolve, reject) => {
+            const sql5 = "INSERT INTO inventory (userId, skinId) VALUES (?, ?)";
+            db.query(sql5, [toUserId, fromSkinId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const insertNew2 = new Promise((resolve, reject) => {
+            const sql6 = "INSERT INTO inventory (userId, skinId) VALUES (?, ?)";
+            db.query(sql6, [fromUserId, toSkinId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        await Promise.all([updateOfferStatus, deleteCurrent1, deleteCurrent2, insertNew1, insertNew2]);
+
+        res.send({ message: "Offer accepted!" });
+    } catch (err) {
+        res.send({ err: err });
+    }
+});
+
+router.delete("/declineoffer/:offerId", (req, res) => {
     const offerId = req.params.offerId;
-    const sql = "DELETE FROM offers WHERE offerId = ?";
+    const sql = "DELETE FROM offerek WHERE offerId = ?";
     db.query(sql, [offerId], (err, result) => {
         if (err) {
             res.send({ err: err });
