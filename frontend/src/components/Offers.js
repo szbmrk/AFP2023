@@ -36,21 +36,21 @@ export default function Offers() {
             <button onClick={() => navigate("/offers/add")}>Ajánlat küldése</button>
             <h2>Ajánlataim</h2>
             {offers.length > 0 ? offers.map((offer) => (
-                <div key={offers.offerId}>
-                    <p>Küldte: {offer.username}</p>
+                <div key={offers.OFFERID}>
+                    <p>Küldte: {offer.USERNAME}</p>
                     <div>
                         <p>te skin-ed: { }</p>
-                        <p>{offer.mySkin[0].fegyverNev + " | " + offer.mySkin[0].nev}</p>
-                        <p>{offer.ertek}</p>
+                        <p>{offer.mySkin[0].FEGYVERNEV + " | " + offer.mySkin[0].NEV}</p>
+                        <p>{offer.ERTEK}</p>
                     </div>
                     <div>
                         <p>ő skin-je: { }</p>
-                        <p>{offer.theirSkin[0].fegyverNev + " | " + offer.theirSkin[0].nev}</p>
-                        <p>{offer.ertek}</p>
+                        <p>{offer.theirSkin[0].FEGYVERNEV + " | " + offer.theirSkin[0].NEV}</p>
+                        <p>{offer.ERTEK}</p>
                     </div>
                     <div>
-                        <button onClick={() => acceptOffer(offer.offerId)}>Elfogad</button>
-                        <button onClick={() => declineOffer(offer.offerId)}>Elutasít</button>
+                        <button onClick={() => acceptOffer(offer.OFFERID)}>Elfogad</button>
+                        <button onClick={() => declineOffer(offer.OFFERID)}>Elutasít</button>
                     </div>
                 </div>
             )) : <h4>Nincs aktív ajánlatod</h4>}

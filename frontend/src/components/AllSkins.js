@@ -20,11 +20,11 @@ export default function AllSkins() {
             <h1>Összes skin</h1>
             <div>
                 {skins.map((skin) => (
-                    <div key={skin.skinId}>
-                        <img src={"../../../backend/skin_images/" + skin.kep} alt="skin" />
-                        <p>{skin.fegyverNev + " | " + skin.nev}</p>
-                        <p>{skin.ritkasagNev}</p>
-                        <p>{skin.ertek}</p>
+                    <div key={skin.SKINID}>
+                        <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" />
+                        <p>{skin.FEGYVERNEV + " | " + skin.NEV}</p>
+                        <p>{skin.RITKASAGNEV}</p>
+                        <p>{skin.ERTEK}</p>
                     </div>
                 ))}
             </div>

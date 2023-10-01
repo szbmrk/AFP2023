@@ -67,8 +67,8 @@ export default function AddOffer() {
                     <select onChange={(e) => changeSelectedUser(e)}>
                         <option value="" hidden>Válassz egy felhasználót..</option>
                         {users.map((user) => (
-                            parseInt(user.userId) !== parseInt(userId) &&
-                            <option key={user.userId} value={user.userId}>{user.username}</option>
+                            parseInt(user.USERID) !== parseInt(userId) &&
+                            <option key={user.USERID} value={user.USERID}>{user.USERNAME}</option>
                         ))}
                     </select>
                     {selectedUser !== "" &&
@@ -77,14 +77,14 @@ export default function AddOffer() {
                             <select onChange={(e) => changeOwnSkin(e)}>
                                 <option value="" hidden>Válassz egy skint..</option>
                                 {mySkins.map((skin) => (
-                                    <option key={skin.skinId} value={skin.skinId}>{skin.fegyverNev + " | " + skin.nev}</option>
+                                    <option key={skin.SKINID} value={skin.SKINID}>{skin.FEGYVERNEV + " | " + skin.NEV}</option>
                                 ))}
                             </select>
                             <h2>Amit kérsz</h2>
                             <select onChange={(e) => changeSelectedSkin(e)}>
                                 <option value="" hidden>Válassz egy skint..</option>
                                 {theirSkins.map((skin) => (
-                                    <option key={skin.skinId} value={skin.skinId}>{skin.fegyverNev + " | " + skin.nev}</option>
+                                    <option key={skin.SKINID} value={skin.SKINID}>{skin.FEGYVERNEV + " | " + skin.NEV}</option>
                                 ))}
                             </select>
                         </>

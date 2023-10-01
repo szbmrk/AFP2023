@@ -4,7 +4,7 @@ import "../styles/inventory.css"
 
 export default function Inventory() {
     const [skins, setSkins] = useState([]);
-    const userId = JSON.parse(sessionStorage.getItem("userId"));
+    const userId = sessionStorage.getItem("userId");
 
     useEffect(() => {
         fetchSkins();
@@ -18,13 +18,13 @@ export default function Inventory() {
     return (
         <>
             <h1>Inventory</h1>
-            {skins && skins.length == 0 ? <div>Inventory is empty!</div> : <div>
+            {skins && skins.length == 0 ? <h2>Üres az inventoryd!</h2> : <div>
                 {skins.map((skin) => (
-                    <div key={skin.skinId}>
-                        <img src={"../../../backend/skin_images/" + skin.kep} alt="skin" />
-                        <p>{skin.fegyverNev + " | " + skin.nev}</p>
-                        <p>{skin.ritkasagNev}</p>
-                        <p>{skin.ertek}</p>
+                    <div key={skin.SKINID}>
+                        <img src={"../../../backend/skin_images/" + skin.KEP} alt="skin" />
+                        <p>{skin.FEGYVERNEV + " | " + skin.NEV}</p>
+                        <p>{skin.RITKASAGNEV}</p>
+                        <p>{skin.ERTEK}</p>
                     </div>
                 ))}
             </div>
