@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Okt 01. 13:10
+-- Létrehozás ideje: 2023. Okt 01. 14:04
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.0.28
 
@@ -97,7 +97,66 @@ INSERT INTO `skinek` (`skinId`, `kep`, `nev`, `ritkasagId`, `ertek`, `fegyverId`
 (54, 'ak-47_frontside_misty.png', 'Frontside Misty', 3, 78.83, 13),
 (55, 'ak-47_redline.png', 'Redline', 3, 93.56, 13),
 (56, 'ak-47_elite_build.png', 'Elite Build', 1, 6.49, 13),
-(57, 'aug_chameleon.png', 'Chameleon', 4, 6.6, 14);
+(57, 'aug_chameleon.png', 'Chameleon', 4, 6.6, 14),
+(62, 'aug_arctic_wolf.png', 'Arctic Wolf', 2, 7, 14),
+(63, 'aug_plague.png', 'Plague', 1, 1.36, 14),
+(64, 'awp_containment_breach.png', 'Containment Breach', 4, 578.89, 15),
+(65, 'awp_hyper_beast.png', 'Hyper Beast', 4, 126.64, 15),
+(66, 'awp_dragon_lore.png', 'Dragon Lore', 4, 13043.1, 15),
+(67, 'awp_fever_dream.png', 'Fever Dream', 3, 14.97, 15),
+(68, 'awp_atheris.png', 'Atheris', 2, 17.24, 15),
+(69, 'awp_safari_mesh.png', 'Safari Mesh', 1, 3.38, 15),
+(70, 'famas_roll_cage.png', 'Roll Cage', 4, 18.22, 16),
+(71, 'famas_survivor_z.png', 'Survivor Z', 1, 0.67, 16),
+(72, 'famas_mecha_industries.png', 'Mecha Industries', 3, 9.78, 16),
+(73, 'g3sg1_stinger.png', 'Stinger', 2, 1.57, 17),
+(76, 'g3sg1_desert_storm.png', 'Desert Storm', 1, 0.14, 17),
+(77, 'galil_ar_chatterbox.png', 'Chatterbox', 4, 69.51, 18),
+(78, 'galil_ar_eco.png', 'Eco', 3, 32.45, 18),
+(79, 'galil_ar_kami.png', 'Kami', 1, 3.44, 18),
+(80, 'm4a1-s_mecha_industries.png', 'Mecha Industries', 4, 86.6, 19),
+(81, 'm4a1-s_nightmare.png', 'Nightmare', 3, 51.08, 19),
+(82, 'm4a1-s_flashback.png', 'Flashback', 2, 3.77, 19),
+(83, 'm4a4_howl.png', 'Howl', 4, 6521.53, 20),
+(84, 'm4a4_the_emperor.png', 'The Emperor', 4, 184.77, 20),
+(85, 'm4a4_desolate_space.png', 'Desolate Space', 3, 32.03, 20),
+(86, 'm4a4_evil_daimyo.png', 'Evil Daimyo', 2, 5.05, 20),
+(87, 'm4a4_poly_mag.png', 'Poly Mag', 1, 0.68, 20),
+(88, 'scar-20_powercore.png', 'Powercore', 2, 2.06, 21),
+(89, 'scar-20_outbreak.png', 'Outbreak', 1, 0.37, 21),
+(90, 'sg_553_darkwing.png', 'Darkwing', 2, 2.3, 22),
+(91, 'sg_553_aerial.png', 'Aerial', 1, 0.34, 22),
+(92, 'sg_553_army_sheen.png', 'Army Sheen', 1, 0.05, 22),
+(93, 'ssg_08_blood_in_water.png', 'Blood in the Water', 4, 80.02, 23),
+(94, 'ssg_08_abyss.png', 'Abyss', 1, 4.01, 23),
+(95, 'ssg_08_acid_fade.png', 'Acid Fade', 1, 2.4, 23),
+(96, 'mac-10_disco_tech.png', 'Disco Tech', 3, 17.99, 24),
+(97, 'mac-10_lapis_gator.png', 'Lapis Gator', 1, 0.91, 24),
+(98, 'mp5-sd_phosphor.png', 'Phosphor', 3, 11.81, 25),
+(99, 'mp5-sd_condition_zero.png', 'Condition Zero', 1, 1.43, 25),
+(100, 'mp7_bloodsport.png', 'Bloodsport', 4, 4.6, 26),
+(101, 'mp7_powercore.png', 'Powercore', 2, 3.39, 26),
+(102, 'mp7_cirrus.png', 'Cirrus', 1, 0.81, 26),
+(103, 'mp9_hypnotic.png', 'Hypnotic', 2, 15, 27),
+(104, 'mp9_bioleak.png', 'Bioleak', 1, 0.3, 27),
+(105, 'pp-bizon_runic.png', 'Runic', 1, 0.3, 28),
+(106, 'pp-bizon_fuel_rod.png', 'Fuel Rod', 2, 3.77, 28),
+(107, 'p90_asiimov.png', 'Asiimov', 4, 42.19, 29),
+(108, 'p90_chopper.png', 'Chopper', 2, 2.09, 29),
+(109, 'p90_grim.png', 'Grim', 1, 0.86, 29),
+(110, 'ump-45_arctic_wolf.png', 'Arctic Wolf', 2, 1.64, 30),
+(111, 'ump-45_labyrinth.png', 'UMP-45 | Labyrinth', 1, 0.27, 30),
+(112, 'mag-7_swag-7.png', 'SWAG-7', 2, 1.96, 31),
+(113, 'mag-7_popdog.png', 'Popdog', 1, 0.29, 31),
+(114, 'nova_toy_soldier.png', 'Toy Soldier', 2, 3.98, 32),
+(115, 'nova_wood_fired.png', 'Wood Fired', 1, 0.27, 32),
+(116, 'sawed-off_the_kraken.png', 'The Kraken', 4, 8.8, 33),
+(117, 'sawed-off_yorick.png', 'Yorick', 1, 0.55, 33),
+(118, 'xm1014_seasons.png', 'Seasons', 2, 2.79, 34),
+(119, 'xm1014_slipstream.png', 'Slipstream', 1, 0.34, 34),
+(120, 'm249_spectre.png', 'Spectre', 1, 0.29, 35),
+(121, 'negev_power_loader.png', 'Power Loader', 2, 5.26, 36),
+(122, 'negev_man-o\'-war.png', 'Man-o\'-war', 1, 0.13, 36);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -119,7 +178,7 @@ ALTER TABLE `skinek`
 -- AUTO_INCREMENT a táblához `skinek`
 --
 ALTER TABLE `skinek`
-  MODIFY `skinId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `skinId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- Megkötések a kiírt táblákhoz
