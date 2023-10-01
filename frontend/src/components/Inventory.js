@@ -18,10 +18,10 @@ export default function Inventory() {
     return (
         <>
             <h1>Inventory</h1>
-            {skins && skins.length == 0 ? <h2>Üres az inventoryd!</h2> : <div>
+            {!skins && skins.length === 0 ? <h2>Üres az inventoryd!</h2> : <div>
                 {skins.map((skin) => (
                     <div key={skin.SKINID}>
-                        <img src={"../../../backend/skin_images/" + skin.KEP} alt="skin" />
+                        <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" />
                         <p>{skin.FEGYVERNEV + " | " + skin.NEV}</p>
                         <p>{skin.RITKASAGNEV}</p>
                         <p>{skin.ERTEK}</p>

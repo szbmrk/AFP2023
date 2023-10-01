@@ -7,52 +7,106 @@ router.get("/test", (req, res) => {
     res.send("Hello World!");
 });
 
-router.post("/register", (req, res) => {
-    const { username, email, password } = req.body;
-    //CHECK IF USERNAME EXISTS
-    const sqlCheck = "SELECT * FROM felhasznalok WHERE username = ?";
-    let userExists = false;
-    db.query(sqlCheck, [username], (err, result) => {
-        if (err) {
-            res.send({ err: err });
-        }
-        if (result.length > 0) {
-            userExists = true;
-            res.send({ message: "Username already exists!" });
-        }
-    }
-    );
+router.post("/register", async (req, res) => {
+    const { USERNAME, email, password } = req.body;
+    // CHECK IF USERNAME EXISTS
+    const sqlCheck = "SELECT * FROM felhasznalok WHERE USERNAME = ?";
 
-    if (userExists) return;
-    const sqlInsert = "INSERT INTO felhasznalok (username, email, passwd) VALUES (?, ?, ?)";
-    db.query(sqlInsert, [username, email, password], (err, result) => {
-        if (err) {
-            res.send({ err: err });
+    try {
+        const userExists = await new Promise((resolve, reject) => {
+            db.query(sqlCheck, [USERNAME], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result.length > 0);
+                }
+            });
+        });
+
+        if (userExists) {
+            res.send({ message: "USERNAME already exists!" });
+            return;
         }
-        if (result) {
-            res.send({ message: "User registered!" });
+
+        const sqlInsert = "INSERT INTO felhasznalok (USERNAME, email, passwd) VALUES (?, ?, ?)";
+        const insertResult = await new Promise((resolve, reject) => {
+            db.query(sqlInsert, [USERNAME, email, password], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        // INSERT RANDOM SKINS FOR EACH RITKASAG TO THE INVENTORY TABLE
+        const sqlSelect = "SELECT * FROM ritkasag";
+        const ritkasagResult = await new Promise((resolve, reject) => {
+            db.query(sqlSelect, (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+
+        const sqlInsertInventory = "INSERT INTO inventory (userId, SKINID) VALUES (?, ?)";
+        let SKINIDs = [];
+
+        for (let i = 0; i < ritkasagResult.length; i++) {
+            const sqlSelectSkin = "SELECT * FROM skinek WHERE RITKASAGID = ? ORDER BY RAND() LIMIT 1";
+            const skinResult = await new Promise((resolve, reject) => {
+                db.query(sqlSelectSkin, [ritkasagResult[i].RITKASAGID], (err, result2) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result2[0].SKINID);
+                    }
+                });
+            });
+
+            SKINIDs.push(skinResult);
+
+            if (SKINIDs.length === ritkasagResult.length) {
+                for (let j = 0; j < SKINIDs.length; j++) {
+                    const result3 = await new Promise((resolve, reject) => {
+                        db.query(sqlInsertInventory, [insertResult.insertId, SKINIDs[j]], (err, result3) => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(result3);
+                            }
+                        });
+                    });
+                }
+            }
         }
-    });
-})
+
+        res.send({ message: "User registered!" });
+    } catch (err) {
+        res.send({ err: err });
+    }
+});
 
 router.post("/login", (req, res) => {
-    const { username, password } = req.body;
-    const sqlSelect = "SELECT * FROM felhasznalok WHERE username = ? AND passwd = ?";
-    db.query(sqlSelect, [username, password], (err, result) => {
+    const { USERNAME, password } = req.body;
+    const sqlSelect = "SELECT * FROM felhasznalok WHERE USERNAME = ? AND passwd = ?";
+    db.query(sqlSelect, [USERNAME, password], (err, result) => {
         if (err) {
             res.send({ err: err });
         }
         if (result.length > 0) {
             res.send({ result: result, message: "User logged in!" });
         } else {
-            res.send({ message: "Wrong username/password combination!" });
+            res.send({ message: "Wrong USERNAME/password combination!" });
         }
     });
 });
 
 router.get("/inventory/:userid", (req, res) => {
     const userId = req.params.userid;
-    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId INNER JOIN inventory ON skinek.skinId = inventory.skinId and inventory.userId = ?";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.FEGYVERID = fegyver.FEGYVERID INNER JOIN ritkasag ON skinek.RITKASAGID = ritkasag.RITKASAGID INNER JOIN inventory ON skinek.SKINID = inventory.SKINID and inventory.userId = ?";
     db.query(sql, [userId], (err, result) => {
         if (err) {
             res.send({ err: err });
@@ -64,7 +118,7 @@ router.get("/inventory/:userid", (req, res) => {
 });
 
 router.get("/skins", (req, res) => {
-    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId";
+    const sql = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.FEGYVERID = fegyver.FEGYVERID INNER JOIN ritkasag ON skinek.RITKASAGID = ritkasag.RITKASAGID";
     db.query(sql, (err, result) => {
         if (err) {
             res.send({ err: err });
@@ -94,8 +148,8 @@ router.get("/offers/:userId", async (req, res) => {
         let theirSkinPromises = [];
 
         for (let i = 0; i < result.length; i++) {
-            mySkinPromises.push(getSkin(result[i].fromSkinId));
-            theirSkinPromises.push(getSkin(result[i].toSkinId));
+            mySkinPromises.push(getSkin(result[i].fromSKINID));
+            theirSkinPromises.push(getSkin(result[i].toSKINID));
         }
 
         const mySkins = await Promise.all(mySkinPromises);
@@ -112,10 +166,10 @@ router.get("/offers/:userId", async (req, res) => {
     }
 });
 
-function getSkin(skinId) {
-    const sql2 = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.fegyverId = fegyver.fegyverId INNER JOIN ritkasag ON skinek.ritkasagId = ritkasag.ritkasagId WHERE skinId = ?";
+function getSkin(SKINID) {
+    const sql2 = "SELECT * FROM skinek INNER JOIN fegyver ON skinek.FEGYVERID = fegyver.FEGYVERID INNER JOIN ritkasag ON skinek.RITKASAGID = ritkasag.RITKASAGID WHERE SKINID = ?";
     return new Promise((resolve, reject) => {
-        db.query(sql2, [skinId], (err, result) => {
+        db.query(sql2, [SKINID], (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -150,10 +204,10 @@ router.get("/users", (req, res) => {
     });
 });
 
-router.get("/skins/:skinId", (req, res) => {
-    const skinId = req.params.skinId;
-    const sql = "SELECT * FROM skinek WHERE skinId = ?";
-    db.query(sql, [skinId], (err, result) => {
+router.get("/skins/:SKINID", (req, res) => {
+    const SKINID = req.params.SKINID;
+    const sql = "SELECT * FROM skinek WHERE SKINID = ?";
+    db.query(sql, [SKINID], (err, result) => {
         if (err) {
             res.send({ err: err });
         }
@@ -163,13 +217,13 @@ router.get("/skins/:skinId", (req, res) => {
     });
 })
 
-router.post("/sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
+router.post("/sendoffer/:fromUserId/:toUserId/:fromSKINID/:toSKINID", (req, res) => {
     const fromUserId = req.params.fromUserId;
     const toUserId = req.params.toUserId;
-    const fromSkinId = req.params.fromSkinId;
-    const toSkinId = req.params.toSkinId;
-    const sql = "INSERT INTO offerek (fromUserId, toUserId, fromSkinId, toSkinId) VALUES (?, ?, ?, ?)";
-    db.query(sql, [fromUserId, toUserId, fromSkinId, toSkinId], (err, result) => {
+    const fromSKINID = req.params.fromSKINID;
+    const toSKINID = req.params.toSKINID;
+    const sql = "INSERT INTO offerek (fromUserId, toUserId, fromSKINID, toSKINID) VALUES (?, ?, ?, ?)";
+    db.query(sql, [fromUserId, toUserId, fromSKINID, toSKINID], (err, result) => {
         if (err) {
             res.send({ err: err });
         }
@@ -192,15 +246,15 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
                 if (offerResult.length === 0) {
                     reject("Offer not found");
                 } else {
-                    const { fromUserId, fromSkinId, toUserId, toSkinId } = offerResult[0];
-                    resolve({ fromUserId, fromSkinId, toUserId, toSkinId });
+                    const { fromUserId, fromSKINID, toUserId, toSKINID } = offerResult[0];
+                    resolve({ fromUserId, fromSKINID, toUserId, toSKINID });
                 }
             }
         });
     });
 
     try {
-        const { fromUserId, fromSkinId, toUserId, toSkinId } = await getOfferDetails;
+        const { fromUserId, fromSKINID, toUserId, toSKINID } = await getOfferDetails;
 
         // Promise to update the offer status
         const updateOfferStatus = new Promise((resolve, reject) => {
@@ -215,8 +269,8 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
         });
 
         const deleteCurrent1 = new Promise((resolve, reject) => {
-            const sql3 = "DELETE FROM inventory WHERE userId = ? AND skinId = ?";
-            db.query(sql3, [fromUserId, fromSkinId], (err, result) => {
+            const sql3 = "DELETE FROM inventory WHERE userId = ? AND SKINID = ?";
+            db.query(sql3, [fromUserId, fromSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -226,8 +280,8 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
         });
 
         const deleteCurrent2 = new Promise((resolve, reject) => {
-            const sql4 = "DELETE FROM inventory WHERE userId = ? AND skinId = ?";
-            db.query(sql4, [toUserId, toSkinId], (err, result) => {
+            const sql4 = "DELETE FROM inventory WHERE userId = ? AND SKINID = ?";
+            db.query(sql4, [toUserId, toSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -237,8 +291,8 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
         });
 
         const insertNew1 = new Promise((resolve, reject) => {
-            const sql5 = "INSERT INTO inventory (userId, skinId) VALUES (?, ?)";
-            db.query(sql5, [toUserId, fromSkinId], (err, result) => {
+            const sql5 = "INSERT INTO inventory (userId, SKINID) VALUES (?, ?)";
+            db.query(sql5, [toUserId, fromSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -248,8 +302,8 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
         });
 
         const insertNew2 = new Promise((resolve, reject) => {
-            const sql6 = "INSERT INTO inventory (userId, skinId) VALUES (?, ?)";
-            db.query(sql6, [fromUserId, toSkinId], (err, result) => {
+            const sql6 = "INSERT INTO inventory (userId, SKINID) VALUES (?, ?)";
+            db.query(sql6, [fromUserId, toSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
