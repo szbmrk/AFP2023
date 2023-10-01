@@ -138,6 +138,18 @@ router.get("/users/:userId", (req, res) => {
     });
 })
 
+router.get("/users", (req, res) => {
+    const sql = "SELECT * FROM felhasznalok";
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.send({ err: err });
+        }
+        if (result) {
+            res.send({ result: result, message: "Users loaded!" });
+        }
+    });
+});
+
 router.get("/skins/:skinId", (req, res) => {
     const skinId = req.params.skinId;
     const sql = "SELECT * FROM skinek WHERE skinId = ?";
@@ -151,7 +163,7 @@ router.get("/skins/:skinId", (req, res) => {
     });
 })
 
-router.post("sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
+router.post("/sendoffer/:fromUserId/:toUserId/:fromSkinId/:toSkinId", (req, res) => {
     const fromUserId = req.params.fromUserId;
     const toUserId = req.params.toUserId;
     const fromSkinId = req.params.fromSkinId;
