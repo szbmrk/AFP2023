@@ -1,9 +1,13 @@
 body{
-    background-color: #ffc0af6a;
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .loginpanel {
-    background-color: #ffc0af;
+    background-color: #d38665;
     width: 400px;
     height: 200px;
     margin-right: auto;
@@ -19,30 +23,49 @@ p {
     color: #1a2639;
     font-size: large;
     font-weight: bold;
+    font-family: monospace;
 }
 
 .login {
     margin: 10px;
     color: #d9dad7;
-    background-color: #132743;
+    background-color: #0e182b;
+    border: none;
+    border-radius: 5px;
+
+    font-size: large;
+    font-family: monospace;
+    
+}
+
+.login:hover{
+    background-color: #b44316a6;
+    color: #d9dad7;
 }
 
 .nav{
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(163, 130, 119, 0.744);
+    background-color: rgba(243, 148, 85, 0.856);
     justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    height: 50px;
+    
 }
 
 .link:hover{
-    color: orange;
+    color: rgb(110, 50, 0);
+    text-decoration: none;
+    font-size: 22px;
 }
 
 .link{
-    color:#132743;
+    color:#000000;
     margin-left: auto;
     margin-right: auto;
 }
@@ -54,4 +77,31 @@ p {
     align-items: center;
     align-self: center;
     justify-content: center;
+    background-color: rgba(218, 151, 106, 0.89);
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.loginbox
+{
+    background-color: rgba(255, 255, 255, 0.548);
+    width: 450px;
+    height: 310px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: monospace;
+    font-weight: bold;
+
+    
 }

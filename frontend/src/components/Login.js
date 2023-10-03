@@ -44,18 +44,18 @@ export default function Login() {
     return (
         <div>
             <nav className="nav">
-                <ul>
                     <Link to="/register" className="link">Regisztráció</Link>
-                </ul>
             </nav>
-            <h1 className="text">Bejelentkezés</h1>
-            <form className="loginpanel" onSubmit={handleSubmit}>
-                <p>felhasználónév</p>
-                <input type="text" name="username" onChange={handleChange} className="user"></input>
-                <p>jelszó</p>
-                <input type="password" name="password" onChange={handleChange} className="password"></input>
-                <button type="submit" className="login">Bejelentkezés</button>
-            </form>
+            <div className="loginbox">
+                <h1 className="text">Bejelentkezés</h1>
+                    <form className="loginpanel" onSubmit={handleSubmit}>
+                        <p>felhasználónév</p>
+                        <input type="text" name="username" onChange={handleChange} className="user"></input>
+                        <p>jelszó</p>
+                        <input type="password" name="password" onChange={handleChange} className="password"></input>
+                        <button type="submit" className="login">Bejelentkezés</button>
+                    </form>
+            </div>
         </div>
     )
 }
