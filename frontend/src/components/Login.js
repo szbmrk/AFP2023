@@ -43,14 +43,12 @@ export default function Login() {
 
     return (
         <div>
-            <nav>
+            <nav className="nav">
                 <ul>
-                    <li>
-                        <Link to="/register">Regisztráció</Link>
-                    </li>
+                    <Link to="/register" className="link">Regisztráció</Link>
                 </ul>
             </nav>
-            <h1>Bejelentkezés</h1>
+            <h1 className="text">Bejelentkezés</h1>
             <form className="loginpanel" onSubmit={handleSubmit}>
                 <p>felhasználónév</p>
                 <input type="text" name="username" onChange={handleChange} className="user"></input>

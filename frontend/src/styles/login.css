@@ -1,3 +1,7 @@
+body{
+    background-color: #ffc0af6a;
+}
+
 .loginpanel {
     background-color: #ffc0af;
     width: 400px;
@@ -21,4 +25,33 @@ p {
     margin: 10px;
     color: #d9dad7;
     background-color: #132743;
+}
+
+.nav{
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(163, 130, 119, 0.744);
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.link:hover{
+    color: orange;
+}
+
+.link{
+    color:#132743;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
 }
