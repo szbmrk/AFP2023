@@ -8,13 +8,13 @@ router.get("/test", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    const { USERNAME, email, password } = req.body;
+    const { username, email, password } = req.body;
     // CHECK IF USERNAME EXISTS
     const sqlCheck = "SELECT * FROM felhasznalok WHERE USERNAME = ?";
 
     try {
         const userExists = await new Promise((resolve, reject) => {
-            db.query(sqlCheck, [USERNAME], (err, result) => {
+            db.query(sqlCheck, [username], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
 
         const sqlInsert = "INSERT INTO felhasznalok (USERNAME, email, passwd) VALUES (?, ?, ?)";
         const insertResult = await new Promise((resolve, reject) => {
-            db.query(sqlInsert, [USERNAME, email, password], (err, result) => {
+            db.query(sqlInsert, [username, email, password], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -90,9 +90,9 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { USERNAME, password } = req.body;
-    const sqlSelect = "SELECT * FROM felhasznalok WHERE USERNAME = ? AND passwd = ?";
-    db.query(sqlSelect, [USERNAME, password], (err, result) => {
+    const { username, password } = req.body;
+    const sqlSelect = "SELECT * FROM felhasznalok WHERE USERNAME = ? AND PASSWD = ?";
+    db.query(sqlSelect, [username, password], (err, result) => {
         if (err) {
             res.send({ err: err });
         }
