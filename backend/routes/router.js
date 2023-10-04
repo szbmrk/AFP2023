@@ -246,15 +246,15 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
                 if (offerResult.length === 0) {
                     reject("Offer not found");
                 } else {
-                    const { fromUserId, fromSKINID, toUserId, toSKINID } = offerResult[0];
-                    resolve({ fromUserId, fromSKINID, toUserId, toSKINID });
+                    const { FROMUSERID, FROMSKINID, TOUSERID, TOSKINID } = offerResult[0];
+                    resolve({ FROMUSERID, FROMSKINID, TOUSERID, TOSKINID });
                 }
             }
         });
     });
 
     try {
-        const { fromUserId, fromSKINID, toUserId, toSKINID } = await getOfferDetails;
+        const { FROMUSERID, FROMSKINID, TOUSERID, TOSKINID } = await getOfferDetails;
 
         // Promise to update the offer status
         const updateOfferStatus = new Promise((resolve, reject) => {
@@ -270,7 +270,7 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
 
         const deleteCurrent1 = new Promise((resolve, reject) => {
             const sql3 = "DELETE FROM inventory WHERE userId = ? AND SKINID = ?";
-            db.query(sql3, [fromUserId, fromSKINID], (err, result) => {
+            db.query(sql3, [FROMUSERID, FROMSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -281,7 +281,7 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
 
         const deleteCurrent2 = new Promise((resolve, reject) => {
             const sql4 = "DELETE FROM inventory WHERE userId = ? AND SKINID = ?";
-            db.query(sql4, [toUserId, toSKINID], (err, result) => {
+            db.query(sql4, [TOUSERID, TOSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -292,7 +292,7 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
 
         const insertNew1 = new Promise((resolve, reject) => {
             const sql5 = "INSERT INTO inventory (userId, SKINID) VALUES (?, ?)";
-            db.query(sql5, [toUserId, fromSKINID], (err, result) => {
+            db.query(sql5, [TOUSERID, FROMSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -303,7 +303,7 @@ router.post("/acceptoffer/:offerId", async (req, res) => {
 
         const insertNew2 = new Promise((resolve, reject) => {
             const sql6 = "INSERT INTO inventory (userId, SKINID) VALUES (?, ?)";
-            db.query(sql6, [fromUserId, toSKINID], (err, result) => {
+            db.query(sql6, [FROMUSERID, TOSKINID], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
