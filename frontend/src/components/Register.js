@@ -45,16 +45,16 @@ export default function Register() {
             <nav className="nav2">
                     <Link to="/login" className="link">Bejelentkezés</Link>
             </nav>
-            <div className="loginbox2">
-                <h1 className="text">Regisztráció</h1>
-                <form className="loginpanel2" onSubmit={handleSubmit}>
-                    <p>felhasználónév</p>
+            <div className="registerbox">
+                <h1 className="text2">Regisztráció</h1>
+                <form className="registerpanel" onSubmit={handleSubmit}>
+                    <p className = "registertext">felhasználónév</p>
                     <input name="username" type="text" className="user" onChange={handleChange} required></input>
-                    <p>e-mail</p>
+                    <p className = "registertext">e-mail</p>
                     <input name="email" type="email" className="email" onChange={handleChange} required></input>
-                    <p>jelszó</p>
+                    <p className ="registertext">jelszó</p>
                     <input name="password" type="password" className="password" onChange={handleChange} required></input>
-                    <button type="submit" className="login">Regisztráció</button>
+                    <button type="submit" className="register">Regisztráció</button>
                 </form>
             </div>
         </div>

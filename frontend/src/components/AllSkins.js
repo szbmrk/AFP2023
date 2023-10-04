@@ -20,12 +20,18 @@ export default function AllSkins() {
             <h1>Összes skin</h1>
             <div>
                 {skins.map((skin) => (
+                <div className="polaroidcontainer">
                     <div key={skin.SKINID}>
-                        <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" />
-                        <p>{skin.FEGYVERNEV + " | " + skin.NEV}</p>
-                        <p>{skin.RITKASAGNEV}</p>
-                        <p>{skin.ERTEK}</p>
+                        <div className ="picture">
+                            <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" />
+                        </div>
+                        <div className = "overlay">
+                            <p>{skin.FEGYVERNEV + " | " + skin.NEV}</p>
+                            <p>{skin.RITKASAGNEV}</p>
+                            <p>{skin.ERTEK}</p>
+                        </div>
                     </div>
+                </div>
                 ))}
             </div>
         </>

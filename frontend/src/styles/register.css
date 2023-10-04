@@ -6,10 +6,10 @@ body{
     background-attachment: fixed;
 }
 
-.loginpanel2 {
-    background-color: #d38665;
+.registerpanel {
+    background-color: #f08030;
     width: 400px;
-    height: 250px;
+    height: 220px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
@@ -17,24 +17,35 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
-p {
+.registertext {
     color: #1a2639;
-    font-size: large;
+    font-size: 18px;
     font-weight: bold;
     font-family: monospace;
+    text-align: center;
+    margin: 10px;
+
 }
 
-.login {
+.register {
     margin: 10px;
     color: #d9dad7;
-    background-color: #0e182b;
+    background-color: #000000;
     border: none;
     border-radius: 5px;
 
     font-size: large;
     font-family: monospace;
+    
+}
+
+.register:hover{
+    background-color: #b44316a6;
+    color: #d9dad7;
 }
 
 .nav2{
@@ -64,28 +75,29 @@ p {
     margin-right: auto;
 }
 
-.text{
+.text2{
     display: flex;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
     align-self: center;
     justify-content: center;
-    background-color: rgba(218, 151, 106, 0.89);
+    background-color: rgba(255, 174, 102, 0.89);
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
+    width: 220px;
     font-family: monospace;
     font-weight: bold;
     font-size: 30px;
     border-radius: 5px;
     padding: 5px;
+    border: 2px solid black;
 }
-.loginbox2
+.registerbox
 {
-    background-color: rgba(255, 255, 255, 0.548);
+    background-color: rgba(255, 255, 255, 0.67);
     width: 450px;
-    height: 360px;
+    height: 335px;
     align-items: center;
     align-self: center;
     justify-content: center;
@@ -96,6 +108,8 @@ p {
     padding: 5px;
     font-family: monospace;
     font-weight: bold;
+    border: 2px solid black;
+
 
     
 }
