@@ -17,11 +17,11 @@ export default function AllSkins() {
     const getRarityColorClass = (RITKASAGID) => {
         // Define color classes for each rarity
         const rarityColors = {
-          1: 'blue',
-          2: 'purple',
-          3: 'pink',
-          4: 'red',
-          5: 'yellow',
+          1: '#4B69FF',
+          2: '#8847FF',
+          3: '#D32CE6',
+          4: '#EB4B4B',
+          5: '#E4AE33',
         };
     
         // Return the corresponding color class based on rarity

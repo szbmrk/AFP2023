@@ -36,3 +36,9 @@ a.nav-link.menu{
     margin-left: auto;
     margin-right: auto;
 }
+a.nav-link.menu.active{
+    color:#9c3f00;
+    margin-left: auto;
+    margin-right: auto;
+}
+
