@@ -38,10 +38,10 @@ export default function AllSkins() {
                         <div className ="picture">
                             <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" className="kep"/>
                         </div>
-                        <div className = "overlay"
-                            
-                        >
-                            <p className ="skintext">{skin.FEGYVERNEV + " | " + skin.NEV}</p>
+                        <div className = "overlay">
+                            <div>
+                                <p className ="skintext">{skin.FEGYVERNEV + " | " + skin.NEV}</p>
+                            </div>
                             <p className="skinRarity"
                                 style={{ color: getRarityColorClass(skin.RITKASAGID) }}
                             >{skin.RITKASAGNEV}</p>
