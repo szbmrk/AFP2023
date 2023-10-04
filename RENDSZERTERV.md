@@ -70,10 +70,10 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
 | Modul | ID | Név | v. | Kifejtés |
 |---|---|---|---|---|
 | Főmenü | K1 | Főmenü | 1.0 | Itt található a bejeltkezés és a regisztráció |
-| Bejelentkezés | K1 | Bejelentkezés | 1.0 | A bejelentkezés gombbal az oldalra lehet bejelentkezni |
-| Inventory | K1 | Inventory | 1.0 | Az Inventory gombbal meg lehet nézni a saját inventorydban lévő skineket |
-| Allskins | K1 | Allskins | 1.0 | Az allskins gombbal meglehet nézni az oldal lévő összes skint|
-| Offers | K1 | Offers | 1.0 | Az offers gombbal meglehet nézni milyen offereid vannak és itt lehet offereket elfogadni/elutasítani/kreálni |
+| Bejelentkezés | K2 | Bejelentkezés | 1.0 | A bejelentkezés gombbal az oldalra lehet bejelentkezni |
+| Inventory | K3 | Inventory | 1.0 | Az Inventory gombbal meg lehet nézni a saját inventorydban lévő skineket |
+| Allskins | K4 | Allskins | 1.0 | Az allskins gombbal meglehet nézni az oldal lévő összes skint|
+| Offers | K5 | Offers | 1.0 | Az offers gombbal meglehet nézni milyen offereid vannak és itt lehet offereket elfogadni/elutasítani/kreálni |
 
 # 6. Fizikai Környezet
 
