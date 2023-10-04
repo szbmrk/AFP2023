@@ -14,9 +14,19 @@ export default function AllSkins() {
         setSkins(response.data.result);
         console.log(response.data.result);
     }
-    if(skin.RITKASAGID==1){
-        
-    }
+    const getRarityColorClass = (RITKASAGID) => {
+        // Define color classes for each rarity
+        const rarityColors = {
+          1: 'blue',
+          2: 'purple',
+          3: 'pink',
+          4: 'red',
+          5: 'yellow',
+        };
+    
+        // Return the corresponding color class based on rarity
+        return rarityColors[RITKASAGID] || 'black';
+      };
 
     return (
         <>
@@ -28,10 +38,14 @@ export default function AllSkins() {
                         <div className ="picture">
                             <img src={`${process.env.PUBLIC_URL}/assets/skin_images/${skin.KEP}`} alt="skin" className="kep"/>
                         </div>
-                        <div className = "overlay">
+                        <div className = "overlay"
+                            
+                        >
                             <p className ="skintext">{skin.FEGYVERNEV + " | " + skin.NEV}</p>
-                            <p className="skinRarity">{skin.RITKASAGNEV}</p>
-                            <p className="skintext">{skin.ERTEK +"$"}</p>
+                            <p className="skinRarity"
+                                style={{ color: getRarityColorClass(skin.RITKASAGID) }}
+                            >{skin.RITKASAGNEV}</p>
+                            <p className="skintext">{skin.ERTEK +"€"}</p>
                         </div>
                     </div>
                 </div>

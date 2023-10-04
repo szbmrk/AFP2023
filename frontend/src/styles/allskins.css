@@ -32,6 +32,8 @@
 }
 .picture
 {
+    display:flex;
+    justify-content: center;
     border-bottom: 2px solid black;
 
 }
@@ -47,7 +49,7 @@
 {
     font-family: monospace;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     height: 50px;
     align-items: center;
@@ -55,6 +57,7 @@
     display: flex;
     margin: 5px;
 }
+
 .skinRarity
 {
     font-family: monospace;
@@ -66,8 +69,8 @@
     justify-content: center;
     display: flex;
     margin: 5px;
-    color: red;
 }
+
 .text
 {
     display: flex;
