@@ -48,20 +48,6 @@ body{
     color: #d9dad7;
 }
 
-.nav2{
-    align-items: center;
-    background-color: rgba(243, 148, 85, 0.856);
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    font-size: 30px;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    height: 50px;
-    
-}
 
 .link:hover{
     color: rgb(110, 50, 0);

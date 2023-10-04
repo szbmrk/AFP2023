@@ -1,4 +1,38 @@
-.active {
-    background-color: #4CAF50;
-    color: white;
+.nav{
+    align-items: center;
+    background-color: rgba(243, 148, 85, 0.856);
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    height: 50px;
+    margin:5px;
+    
+}
+/*
+.links:hover{
+    color: rgb(110, 50, 0);
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.links{
+    color:#000000;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+a.nav-link.menu:hover{
+    color: rgb(110, 50, 0);
+    text-decoration: none;
+    font-size: 22px;
+}
+a.nav-link.menu{
+    color:#000000;
+    margin-left: auto;
+    margin-right: auto;
 }

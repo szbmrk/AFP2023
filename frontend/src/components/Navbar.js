@@ -5,21 +5,12 @@ import '../styles/navbar.css'
 
 export default function Navbar() {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <NavLink to="/inventory">Inventory</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/skins">Összes skin</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/offers">Ajánlatok</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/logout">Kijelentkezés</NavLink>
-                </li>
-            </ul>
-        </nav>
+            <nav className="nav">
+                
+                    <NavLink to="/inventory" className="links">Inventory</NavLink>
+                    <NavLink to="/skins" className="links">Összes skin</NavLink>
+                    <NavLink to="/offers" className="links">Ajánlatok</NavLink>
+                    <NavLink to="/logout" className="links">Kijelentkezés</NavLink>
+            </nav>
     )
 }
