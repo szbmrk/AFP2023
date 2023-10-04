@@ -32,7 +32,7 @@ export default function Offers() {
 
     return (
         <>
-            <h1>Ajánlatok</h1>
+            <h1 className='text'>Ajánlatok</h1>
             <button onClick={() => navigate("/offers/add")}>Ajánlat küldése</button>
             <h2>Ajánlataim</h2>
             {offers.length > 0 ? offers.map((offer) => (
