@@ -14,10 +14,13 @@ export default function AllSkins() {
         setSkins(response.data.result);
         console.log(response.data.result);
     }
+    if(skin.RITKASAGID==1){
+        
+    }
 
     return (
         <>
-            <h1>Összes skin</h1>
+            <h1 className="text">Összes skin</h1>
             <div className = "container">
                 {skins.map((skin) => (
                 <div className="polaroidcontainer">
@@ -27,8 +30,8 @@ export default function AllSkins() {
                         </div>
                         <div className = "overlay">
                             <p className ="skintext">{skin.FEGYVERNEV + " | " + skin.NEV}</p>
-                            <p className="skintext">{skin.RITKASAGNEV}</p>
-                            <p className="skintext">{skin.ERTEK}</p>
+                            <p className="skinRarity">{skin.RITKASAGNEV}</p>
+                            <p className="skintext">{skin.ERTEK +"$"}</p>
                         </div>
                     </div>
                 </div>
