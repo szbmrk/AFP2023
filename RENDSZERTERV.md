@@ -19,7 +19,7 @@ Az ideális rendszerben a felhasználók gyorsan és egyszerűen regisztrálhatn
 | Főoldal                     |                                           |
 | Design                      | css/javascript                            |    
 # 3. Üzleti feladatok modellje
-Egy ilyen kép mindenképp kellene, (draw.io) oldalon könnyen megszerkeszthető
+![Képernyőterv főmenu1](./uzleti_modell.jpg)
 # 4. Követelmények
 
 ## Funkcionális követelmények:
@@ -69,9 +69,12 @@ Csere ajánlat: A felhasználók ajánlatot tehetnek egy másik felhasználó sk
 ## Menükhöz tartozó specifikációk:
 | Modul | ID | Név | v. | Kifejtés |
 |---|---|---|---|---|
-| Rendezés | K1 | Rendezés | 1.0 | A rendezés gomb segítségével lehetőség van receptek rendezésére név szerint (A-Z) - növekvően |
+| Főmenü | K1 | Főmenü | 1.0 | Itt található a bejeltkezés és a regisztráció |
+| Bejelentkezés | K2 | Bejelentkezés | 1.0 | A bejelentkezés gombbal az oldalra lehet bejelentkezni |
+| Inventory | K3 | Inventory | 1.0 | Az Inventory gombbal meg lehet nézni a saját inventorydban lévő skineket |
+| Allskins | K4 | Allskins | 1.0 | Az allskins gombbal meglehet nézni az oldal lévő összes skint|
+| Offers | K5 | Offers | 1.0 | Az offers gombbal meglehet nézni milyen offereid vannak és itt lehet offereket elfogadni/elutasítani/kreálni |
 
-stb...
 # 6. Fizikai Környezet
 
 A teszt webes környezetben és minden böngészőben reszponzívnak készül el.
@@ -104,7 +107,6 @@ A rendszer háromrétegű architektúrát követ:
 - Trello - projekt szervezése, rendezése
 - Discord - verbális kommunikáció
 - Git, GitHub - Alkalmazás verzióinak követése
-- Rajzolóprogramok az ábrákhoz
+- Rajzolóprogramok az ábrákhoz(draw.io)
 - Kódszerkesztők (Visual Studio Code)
 - Prototype - mockup, képernyő tervek
-- stb
