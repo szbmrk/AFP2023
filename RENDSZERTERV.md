@@ -19,7 +19,7 @@ Az ideális rendszerben a felhasználók gyorsan és egyszerűen regisztrálhatn
 | Főoldal                     |                                           |
 | Design                      | css/javascript                            |    
 # 3. Üzleti feladatok modellje
-Egy ilyen kép mindenképp kellene, (draw.io) oldalon könnyen megszerkeszthető
+![Képernyőterv főmenu1](./uzleti_modell.jpg)
 # 4. Követelmények
 
 ## Funkcionális követelmények:
