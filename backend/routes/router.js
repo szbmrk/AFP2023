@@ -148,8 +148,8 @@ router.get("/offers/:userId", async (req, res) => {
         let theirSkinPromises = [];
 
         for (let i = 0; i < result.length; i++) {
-            mySkinPromises.push(getSkin(result[i].fromSKINID));
-            theirSkinPromises.push(getSkin(result[i].toSKINID));
+            mySkinPromises.push(getSkin(result[i].FROMSKINID));
+            theirSkinPromises.push(getSkin(result[i].TOSKINID));
         }
 
         const mySkins = await Promise.all(mySkinPromises);
