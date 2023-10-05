@@ -36,20 +36,22 @@ export default function Offers() {
             <div className ="offercontainer">
                 <button onClick={() => navigate("/offers/add")} className="send">Ajánlat küldése</button>
                 {offers.length > 0 ? offers.map((offer) => (
-                    <div key={offers.OFFERID} className = "container">
+                    <div key={offers.OFFERID} className = "container2">
                         <p className ="text4">Küldte: {offer.USERNAME}</p>
-                        <div className="yours">
-                            <p>{"A te skined: "+ offer.mySkin[0].FEGYVERNEV + " | " + offer.mySkin[0].NEV}</p>
-                            <p>{offer.ERTEK}</p>
+                        <div className ="texts">
+                            <div className="yours">
+                                <p style ={{fontFamily: 'monospace', fontSize: '18px'}}>{"A te skined: "+ offer.mySkin[0].FEGYVERNEV + " | " + offer.mySkin[0].NEV}</p>
+                                <p>{offer.ERTEK}</p>
+                            </div>
+                            <div className="theirs">
+                                <p style ={{fontFamily: 'monospace', fontSize: '18px'}}>{"Az ő skinje: " + offer.theirSkin[0].FEGYVERNEV + " | " + offer.theirSkin[0].NEV}</p>
+                                <p>{offer.ERTEK}</p>
+                            </div>
                         </div>
-                        <div className="theirs">
-                            <p>{"Az ő skinje:" + offer.theirSkin[0].FEGYVERNEV + " | " + offer.theirSkin[0].NEV}</p>
-                            <p>{offer.ERTEK}</p>
-                        </div>
-                        <div>
-                            <button onClick={() => acceptOffer(offer.OFFERID)} className="send2">Elfogad</button>
-                            <button onClick={() => declineOffer(offer.OFFERID)} className="send2">Elutasít</button>
-                        </div>
+                            <div>
+                                <button onClick={() => acceptOffer(offer.OFFERID)} className="send2">Elfogad</button>
+                                <button onClick={() => declineOffer(offer.OFFERID)} className="send2">Elutasít</button>
+                            </div>
                     </div>
                   
             )) : <h4>Nincs aktív ajánlatod</h4>}
