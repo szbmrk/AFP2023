@@ -1,4 +1,4 @@
-| Tesztelő: Bartu János | Időpont: 2023.10.02. 13:00 | Böngésző: Google Chrome |
+| Tesztelő: Bartus János | Időpont: 2023.10.02. 13:00 | Böngésző: Google Chrome |
 | -------------------------------------|----------|-------------------------|
 
 | Időpont | Teszt                | Eredmény | Megjegyzés                                                            |
