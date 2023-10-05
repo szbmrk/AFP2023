@@ -1,0 +1,73 @@
+.offers
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+    height: 100%;
+    padding: 0 0 0 0;
+    background-color: #ffe1a8a7;
+}
+.text3
+{
+ background-color: rgba(255, 255, 255, 0.632);
+}
+.container
+{
+    justify-content: center;
+    display:flex;
+    background-color: #ffe1a8a7;
+    height: 265px;
+    width:265px;
+    margin:5px;
+}
+.offercontainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+    height: 100%;
+    padding: 0 0 0 0;
+}
+.send {
+    margin: 10px;
+    color: #d9dad7;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+
+    font-size: large;
+    font-family: monospace;
+    
+}
+
+.send:hover{
+    background-color: #d03b00;
+    color: #d9dad7;
+}
+.send2 {
+    margin: 2px;
+    color: #d9dad7;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+
+    font-size: large;
+    font-family: monospace;
+    
+}
+
+.send2:hover:hover{
+    background-color: #d03b00;
+    color: #d9dad7;
+}
+.yours
+{
+
+    display: flex;
+}

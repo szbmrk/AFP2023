@@ -62,10 +62,10 @@ export default function AddOffer() {
         <>
             {users.length > 1 && mySkins.length > 0 &&
                 <>
-                    <h1>Ajánlat küldése</h1>
-                    <h2>Kinek szeretnél ajánlatot küldeni?</h2>
+                    <h1 className ="offersend">Ajánlat küldése</h1>
+                    <h2 className="offerquestion">Kinek szeretnél ajánlatot küldeni?</h2>
                     <select onChange={(e) => changeSelectedUser(e)}>
-                        <option value="" hidden>Válassz egy felhasználót..</option>
+                        <option value="" hidden className="offeroptions">Válassz egy felhasználót..</option>
                         {users.map((user) => (
                             parseInt(user.USERID) !== parseInt(userId) &&
                             <option key={user.USERID} value={user.USERID}>{user.USERNAME}</option>
@@ -73,16 +73,16 @@ export default function AddOffer() {
                     </select>
                     {selectedUser !== "" &&
                         <>
-                            <h2> Te küldöd</h2>
+                            <h2 className="offertext"> Te küldöd</h2>
                             <select onChange={(e) => changeOwnSkin(e)}>
-                                <option value="" hidden>Válassz egy skint..</option>
+                                <option value="" hidden >Válassz egy skint..</option>
                                 {mySkins.map((skin) => (
                                     <option key={skin.SKINID} value={skin.SKINID}>{skin.FEGYVERNEV + " | " + skin.NEV}</option>
                                 ))}
                             </select>
-                            <h2>Amit kérsz</h2>
+                            <h2 className ="offertext">Amit kérsz</h2>
                             <select onChange={(e) => changeSelectedSkin(e)}>
-                                <option value="" hidden>Válassz egy skint..</option>
+                                <option value="" hidden className="offeroptiopns">Válassz egy skint..</option>
                                 {theirSkins.map((skin) => (
                                     <option key={skin.SKINID} value={skin.SKINID}>{skin.FEGYVERNEV + " | " + skin.NEV}</option>
                                 ))}
@@ -90,7 +90,7 @@ export default function AddOffer() {
                         </>
                     }
                     {setSelectedUser !== "" && myChosenSkin !== "" && theirChosenSkin !== "" &&
-                        <button onClick={handleSubmit}>Ajánlat küldése</button>}
+                        <button onClick={handleSubmit} className ="sendButton">Ajánlat küldése</button>}
                 </>}
         </>
     )
